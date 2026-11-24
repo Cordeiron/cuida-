@@ -174,25 +174,31 @@ export function ResultScreen({
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {scores.history.slice(0, 3).map((item) => (
-              <div
-                key={item.id}
-                className="p-3.5 rounded-2xl bg-[#FFF9EE] border border-[#241F31]/20 flex items-center justify-between gap-2"
-              >
-                <div className="min-w-0">
-                  <div className="text-sm font-bold truncate">{bundle.endings[item.ending]?.badge || item.ending}</div>
-                  <div className="text-xs text-[#6B5E7A]">
-                    {item.difficulty} · {item.hpRemaining}% vida
+          {scores.history.length === 0 ? (
+            <div className="p-4 rounded-2xl bg-[#FFF9EE] border border-dashed border-[#241F31]/25 text-sm text-[#524863] text-center">
+              Nenhuma partida anterior salva ainda.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {scores.history.slice(0, 3).map((item) => (
+                <div
+                  key={item.id}
+                  className="p-3.5 rounded-2xl bg-[#FFF9EE] border border-[#241F31]/20 flex items-center justify-between gap-2"
+                >
+                  <div className="min-w-0">
+                    <div className="text-sm font-bold truncate">{bundle.endings[item.ending]?.badge || item.ending}</div>
+                    <div className="text-xs text-[#6B5E7A]">
+                      {item.difficulty} · {item.hpRemaining}% vida
+                    </div>
+                  </div>
+                  <div className="font-mono-nums font-bold text-base flex items-center gap-1 shrink-0">
+                    <Award className="w-4 h-4 text-[#F59E0B]" />
+                    <span>{item.score}</span>
                   </div>
                 </div>
-                <div className="font-mono-nums font-bold text-base flex items-center gap-1 shrink-0">
-                  <Award className="w-4 h-4 text-[#F59E0B]" />
-                  <span>{item.score}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

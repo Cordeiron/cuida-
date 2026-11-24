@@ -408,7 +408,9 @@ export function GameArena({
     hp >= 65 ? 'bg-[#10B981]' : hp >= 35 ? 'bg-[#F59E0B]' : 'bg-[#F43F5E]';
 
   const secondsLeft = Math.ceil(timeLeftMs / 1000);
-  const formattedClock = `00:${String(secondsLeft).padStart(2, '0')}`;
+  const minsLeft = Math.floor(secondsLeft / 60);
+  const secsRemainder = secondsLeft % 60;
+  const formattedClock = `${String(minsLeft).padStart(2, '0')}:${String(secsRemainder).padStart(2, '0')}`;
 
   return (
     <div className="min-h-screen w-full bg-[#FFFDF7] text-[#241F31] flex flex-col">
@@ -534,10 +536,10 @@ export function GameArena({
                 {hearts.map((h) => (
                   <span
                     key={h.id}
-                    className="absolute -top-4 text-2xl pointer-events-none animate-heart-pop z-30"
+                    className="absolute -top-4 pointer-events-none z-30"
                     style={{ transform: `translateX(${h.xOffset}px)` }}
                   >
-                    ❤️
+                    <span className="inline-block text-2xl animate-heart-pop">❤️</span>
                   </span>
                 ))}
 
