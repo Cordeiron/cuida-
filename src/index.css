@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: #FFFDF7;
+    color: #241F31;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Tactile Indie Game Surface Styles */
+.indie-card {
+  background-color: #FFFFFF;
+  border: 2px solid #241F31;
+  box-shadow: 0 4px 0 #241F31;
+}
+
+.indie-card-soft {
+  background-color: #FFF9EE;
+  border: 2px solid #241F31;
+  box-shadow: 0 3px 0 #241F31;
+}
+
+.indie-btn {
+  border: 2px solid #241F31;
+  box-shadow: 0 4px 0 #241F31;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 120ms cubic-bezier(0.16, 1, 0.3, 1), background-color 150ms ease;
+}
+
+.indie-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #241F31;
+}
+
+.indie-btn:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #241F31;
+}
+
+/* Custom Animations (compositor-only transform & opacity) */
+@keyframes egg-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+@keyframes egg-panic {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-5px) rotate(-4deg);
+  }
+  40% {
+    transform: translateX(5px) rotate(4deg);
+  }
+  60% {
+    transform: translateX(-4px) rotate(-3deg);
+  }
+  80% {
+    transform: translateX(4px) rotate(3deg);
+  }
+}
+
+@keyframes egg-fall {
+  0%, 100% {
+    transform: translateY(-16px) rotate(-8deg) scale(0.96);
+  }
+  50% {
+    transform: translateY(22px) rotate(10deg) scale(1.03);
+  }
+}
+
+@keyframes threat-bounce {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-7px) scale(1.03);
+  }
+}
+
+@keyframes rain-streak {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(140px);
+    opacity: 0;
+  }
+}
+
+@keyframes heart-pop {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-56px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+.animate-egg-float {
+  animation: egg-float 3.2s ease-in-out infinite;
+}
+
+.animate-egg-panic {
+  animation: egg-panic 0.35s ease-in-out infinite;
+}
+
+.animate-egg-fall {
+  animation: egg-fall 0.65s ease-in-out infinite;
+}
+
+.animate-threat-bounce {
+  animation: threat-bounce 1.2s ease-in-out infinite;
+}
+
+.animate-rain-streak {
+  animation: rain-streak 0.7s linear infinite;
+}
+
+.animate-heart-pop {
+  animation: heart-pop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-egg-float,
+  .animate-egg-panic,
+  .animate-egg-fall,
+  .animate-threat-bounce,
+  .animate-rain-streak,
+  .animate-heart-pop {
+    animation: none !important;
+  }
+}

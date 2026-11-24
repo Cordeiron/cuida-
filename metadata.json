@@ -1,0 +1,6 @@
+{
+  "name": "Rebeca, Cuida do Meu Ovo!",
+  "description": "Um desafio exclusivo, interativo e hilário feito especialmente para a Rebeca proteger um ovo muito importante de perigos absurdos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
